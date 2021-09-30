@@ -112,7 +112,7 @@ def ctrl_callback(msg):
 
         
         direction = msg.data[0] 
-        speed = msg.data[1]
+        speed = -abs(msg.data[1])
         
         # backward 
         if direction == 0:
