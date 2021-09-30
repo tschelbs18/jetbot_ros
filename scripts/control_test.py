@@ -15,55 +15,61 @@ if __name__ == '__main__':
         rospy.init_node('jetbot_test')
         ctr_pub = rospy.Publisher('/ctrl_cmd', Float32MultiArray, queue_size=1)
 
-        reverse = 0.0
-        forward = 1.0
-        right = 2.0
-        left = 3.0
-        stop = 4.0
-        speed = 0.2
+        move = 0.0
+        stop = 1.0
+
 
         # reverse 
+        speed_l = -0.2
+        speed_r = -0.2
         for i in range(10):
             msg = Float32MultiArray()
-            msg.data = [reverse, speed]
+            msg.data = [move, speed_l, speed_r]
             ctr_pub.publish(msg)
             time.sleep(0.1)
 
-        msg.data = [stop, speed]
+        msg.data = [stop, speed_l, speed_r]
         ctr_pub.publish(msg)
         time.sleep(1.0)
 
         # forward
+        speed_l = 0.2
+        speed_r = 0.2
         for i in range(10):
             msg = Float32MultiArray()
-            msg.data = [forward, speed]
+            msg.data = [move, speed_l, speed_r]
             ctr_pub.publish(msg)
             time.sleep(0.1)
 
-        msg.data = [stop, speed]
+        msg.data = [stop, speed_l, speed_r]
         ctr_pub.publish(msg)
         time.sleep(1.0)
 
 
         # right
+        speed_l = 0.2
+        speed_r = -0.2
         for i in range(10):
             msg = Float32MultiArray()
-            msg.data = [right, speed]
+            msg.data = [move, speed_l, speed_r]
             ctr_pub.publish(msg)
             time.sleep(0.1)
 
-        msg.data = [stop, speed]
+        msg.data = [stop, speed_l, speed_r]
         ctr_pub.publish(msg)
         time.sleep(1.0)
 
         # left
+        speed_l = -0.2
+        speed_l = 0.0
+        speed_r = 0.2
         for i in range(10):
             msg = Float32MultiArray()
-            msg.data = [left, speed]
+            msg.data = [move, speed_l, speed_r]
             ctr_pub.publish(msg)
             time.sleep(0.1)
 
-        msg.data = [stop, speed]
+        msg.data = [stop, speed_l, speed_r]
         ctr_pub.publish(msg)
         time.sleep(1.0)
 

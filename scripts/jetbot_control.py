@@ -111,27 +111,15 @@ def joystick_callback(msg):
 def ctrl_callback(msg):
 
         
-        direction = msg.data[0] 
-        speed = -abs(msg.data[1])
+        command = msg.data[0] 
+        speed_l = -msg.data[1]
+        speed_r = -msg.data[2]
         
-        # backward 
-        if direction == 0:
-            set_speed(motor_left_ID,  -speed)
-            set_speed(motor_right_ID, -speed)  
+        # move 
+        if command == 0:
+            set_speed(motor_left_ID,  speed_l)
+            set_speed(motor_right_ID, speed_r)  
 
-        # forward
-        elif direction == 1:
-            set_speed(motor_left_ID,   speed)
-            set_speed(motor_right_ID,  speed)
-        # right
-        elif direction == 2:
-            set_speed(motor_left_ID,   speed)
-            set_speed(motor_right_ID, -speed) 
-        # left
-        elif direction == 3:
-            set_speed(motor_left_ID,  -speed)
-            set_speed(motor_right_ID,  speed) 
-        # stop
         else:
             cmd="stop"
             all_stop()
