@@ -61,7 +61,6 @@ if __name__ == '__main__':
 
         # left
         speed_l = -0.2
-        speed_l = 0.0
         speed_r = 0.2
         for i in range(10):
             msg = Float32MultiArray()
