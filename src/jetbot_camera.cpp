@@ -135,12 +135,13 @@ int main(int argc, char **argv)
 	/*
 	 * start publishing video frames
 	 */
+	ros::Rate rate(10.0);
 	while( ros::ok() )
 	{
-		//if( raw_pub->getNumSubscribers() > 0 )
-			aquireFrame();
-
-		ros::spinOnce();
+		
+		aquireFrame();
+		rate.sleep();
+		//ros::spinOnce();
 	}
 
 	delete camera;
