@@ -154,4 +154,5 @@ if __name__ == '__main__':
     current_orientation = 0
 
     for _x, _y, _theta in zip(x, y, theta):
-        move_and_pose_waypoint(_x, _y, _theta, 0, 0, 0)
+        move_and_pose_waypoint(_x, _y, _theta, current_x,
+                               current_y, current_orientation)
