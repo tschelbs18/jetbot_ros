@@ -32,6 +32,7 @@ def move_forward(distance, left_speed, right_speed, forward_rate=0.415):
         ctr_pub.publish(msg)
         time.sleep(0.1)
 
+    msg = Float32MultiArray()
     msg.data = [stop, left_speed, right_speed]
     ctr_pub.publish(msg)
     time.sleep(1.0)
@@ -47,6 +48,7 @@ def right_turn(turn, left_speed, right_speed, turn_rate=3.02):
         ctr_pub.publish(msg)
         time.sleep(0.1)
 
+    msg = Float32MultiArray()
     msg.data = [stop, left_speed, right_speed]
     ctr_pub.publish(msg)
     time.sleep(1.0)
@@ -63,6 +65,7 @@ def left_turn(turn, left_speed, right_speed, turn_rate=1.87):
         ctr_pub.publish(msg)
         time.sleep(0.1)
 
+    msg = Float32MultiArray()
     msg.data = [stop, left_speed, right_speed]
     ctr_pub.publish(msg)
     time.sleep(1.0)
