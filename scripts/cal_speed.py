@@ -20,8 +20,8 @@ if __name__ == '__main__':
 
 
         # forward 
-        speed_l = -0.72
-        speed_r = -0.70
+        speed_l = -0.98
+        speed_r = -0.95
         for i in range(30):
             msg = Float32MultiArray()
             msg.data = [move, speed_l, speed_r]
@@ -33,8 +33,8 @@ if __name__ == '__main__':
         time.sleep(1.0)
 
         # reverse
-        speed_l = 0.72
-        speed_r = 0.7
+        speed_l = 0.92
+        speed_r = 0.9
         for i in range(30):
             msg = Float32MultiArray()
             msg.data = [move, speed_l, speed_r]

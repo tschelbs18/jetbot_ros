@@ -13,16 +13,16 @@ from sensor_msgs.msg import Joy
 def parse_args():
 
     parser = argparse.ArgumentParser(description='Inputs for JetBot')
-    parser.add_argument("--left_forward_speed", default=0.75)
-    parser.add_argument("--right_forward_speed", default=0.65)
-    parser.add_argument("--left_turn_speed", default=0.57)
-    parser.add_argument("--right_turn_speed", default=0.55)
+    parser.add_argument("--left_forward_speed", default=0.98)
+    parser.add_argument("--right_forward_speed", default=0.95)
+    parser.add_argument("--left_turn_speed", default=0.83)
+    parser.add_argument("--right_turn_speed", default=0.8)
     args = parser.parse_args()
     print(args)
     return args
 
 
-def move_forward(distance, left_speed, right_speed, forward_rate=0.415):
+def move_forward(distance, left_speed, right_speed, forward_rate=0.34):
     duration = int(round(distance/forward_rate * 10))
 
     for _ in range(duration):
@@ -38,7 +38,7 @@ def move_forward(distance, left_speed, right_speed, forward_rate=0.415):
     time.sleep(1.0)
 
 
-def right_turn(turn, left_speed, right_speed, turn_rate=3.02):
+def right_turn(turn, left_speed, right_speed, turn_rate=2.20):
     duration = int(round(turn/turn_rate * 10))
 
     for _ in range(duration):
@@ -54,7 +54,7 @@ def right_turn(turn, left_speed, right_speed, turn_rate=3.02):
     time.sleep(1.0)
 
 
-def left_turn(turn, left_speed, right_speed, turn_rate=1.87):
+def left_turn(turn, left_speed, right_speed, turn_rate=1.42):
 
     duration = int(round(turn/turn_rate * 10))
 
@@ -130,7 +130,7 @@ if __name__ == '__main__':
     x = []
     y = []
     theta = []
-    with open('data/waypoints.txt') as file:
+    with open(r'waypoints.txt') as file:
         lines = file.readlines()
 
     for line in lines:
