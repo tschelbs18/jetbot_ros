@@ -22,7 +22,7 @@ if __name__ == '__main__':
         # left
         speed_l = 0.83
         speed_r = -0.8
-        for i in range(5):
+        for i in range(10):
             msg = Float32MultiArray()
             msg.data = [move, speed_l, speed_r]
             ctr_pub.publish(msg)
@@ -35,7 +35,7 @@ if __name__ == '__main__':
         # right
         speed_l = -0.83
         speed_r = 0.8
-        for i in range(5):
+        for i in range(10):
             msg = Float32MultiArray()
             msg.data = [move, speed_l, speed_r]
             ctr_pub.publish(msg)

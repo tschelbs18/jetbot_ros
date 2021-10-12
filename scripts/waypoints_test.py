@@ -38,7 +38,7 @@ def move_forward(distance, left_speed, right_speed, forward_rate=0.34):
     time.sleep(1.0)
 
 
-def right_turn(turn, left_speed, right_speed, turn_rate=2.20):
+def right_turn(turn, left_speed, right_speed, turn_rate=2.06):
     duration = int(round(turn/turn_rate * 10))
 
     for _ in range(duration):
@@ -54,7 +54,7 @@ def right_turn(turn, left_speed, right_speed, turn_rate=2.20):
     time.sleep(1.0)
 
 
-def left_turn(turn, left_speed, right_speed, turn_rate=1.42):
+def left_turn(turn, left_speed, right_speed, turn_rate=1.04):
 
     duration = int(round(turn/turn_rate * 10))
 
@@ -93,6 +93,7 @@ def orientation_difference(theta1, theta0):
 def move_and_pose_waypoint(x, y, theta, current_x, current_y, current_orientation):
     desired_orientation = calculate_orientation(x, current_x, y, current_y)
     turn_needed = desired_orientation - current_orientation
+    print("Turning by: " + str(turn_needed) + " degrees")
     if turn_needed > 0:
         left_turn(abs(turn_needed), args.left_turn_speed,
                   args.right_turn_speed)
@@ -104,6 +105,7 @@ def move_and_pose_waypoint(x, y, theta, current_x, current_y, current_orientatio
                            (desired_orientation-current_orientation)) % 6.28
 
     distance = calculate_distance(x, current_x, y, current_y)
+    print('Distance required to move is: ' + str(distance) + ' meters')
     move_forward(distance, args.left_forward_speed, args.right_forward_speed)
     current_x, current_y = current_x + \
         (x - current_x), current_y + (y - current_y)
@@ -154,5 +156,5 @@ if __name__ == '__main__':
     current_orientation = 0
 
     for _x, _y, _theta in zip(x, y, theta):
-        move_and_pose_waypoint(_x, _y, _theta, current_x,
+        current_x, current_y, current_orientation = move_and_pose_waypoint(_x, _y, _theta, current_x,
                                current_y, current_orientation)
